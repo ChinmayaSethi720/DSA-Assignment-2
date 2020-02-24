@@ -1,55 +1,65 @@
 import java.util.Scanner;
-interface Empinterface{
+interface EmpInterface
+{
 	void displayEmp();
 	void giveBonus(double amount);
 }
-abstract class Employe{
-	public abstract void emp();
+abstract class Employee
+{
+	int empID;
+String fname;
+	String lname;
+	double salary;
 }
-class empid extends Employe{
-	Scanner sc= new Scanner(System.in);
-	public void emp() {
-		System.out.println("Enter Employee ID: ");
-		String id= sc.next();
-		System.out.println("Employee ID: "+id);
+class Manager extends Employee implements EmpInterface
+{
+	Manager(){
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enetr ID: ");
+		empID=sc.nextInt();
+		System.out.println("Enter fname: ");
+		 fname=sc.next();
+		System.out.println("Enter lname: ");
+		lname=sc.next();
+		System.out.println("Enetr salary: ");
+		 salary=sc.nextDouble();
 	}
-}
-class fname extends Employe{
-	Scanner sc= new Scanner(System.in);
-	public void emp() {
-		System.out.println("Enter first name: ");
-		String fname= sc.next();
-		System.out.print("Name: "+fname);
+		
+	
+	public void displayEmp() {
+		// TODO Auto-generated method stub
+		System.out.println("Employee ID: "+empID);
+		System.out.println("Employee First name: "+fname);
+		System.out.println("Employee Last name: "+lname);
+		System.out.println("Employee salary: "+salary);
 	}
-}
-class lname extends Employe{
-	Scanner sc= new Scanner(System.in);
-	public void emp() {
-		System.out.println("Enter last name: ");
-		String lname= sc.next();
-		System.out.println(" "+lname);
+	public void giveBonus(double amount)
+	{
+		if(amount<=0)
+		{
+			System.out.println("wrong input");
+		}
+		else
+		{
+			salary=salary+amount;
+		}
 	}
-}
-class salary extends Employe{
-	Scanner sc= new Scanner (System.in);
-	public void emp() {
-		System.out.println("Enter salary: ");
-		int salary= sc.nextInt();
-		System.out.println("Salary: "+salary);
-	}
-}
-public class a2q8 {
+	
+		}
+
+public class a2q8{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-Employe id= new empid();
-fname fn= new fname();
-lname ln= new lname();
-salary sal= new salary();
-
-id.emp();
-fn.emp();
-ln.emp();
-sal.emp();
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter size of array");
+    int n=sc.nextInt();
+    Manager []e=new Manager[n];
+    for(int i=0;i<n;i++)
+    {
+    	e[i]=new Manager();
+    	e[i].giveBonus(500);
+    	e[i].displayEmp();
+    }
 	}
-
-}
+}	
